@@ -4,8 +4,11 @@ const express = require("express")
 const PORT = 3000;
 const app = express()
 
-app.get("/test", (req, res) => {
-    res.json({"ok": true})
+app.get("/wake-up", (req, res) => {
+    res.json({"ok": true})})
+
+app.post("/send-email", (req, res) => {
+    
 })
 
 app.listen(PORT, () => 
