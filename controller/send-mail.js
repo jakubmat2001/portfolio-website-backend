@@ -14,7 +14,6 @@ const transporter = nodemailer.createTransport({
 
 const handleMessage = async (req, res) => {
     const { email, message } = req.body;
-    console.log(`email ${email}, message ${message}`)
     try {
         const mailSent = await handleSendMail( email, message);
         res.header("Access-Control-Allow-Origin", "*");
@@ -48,7 +47,6 @@ const handleSendMail = (email, message) => {
         });
     });
 };
-
 
 module.exports = {
     handleMessage: handleMessage
