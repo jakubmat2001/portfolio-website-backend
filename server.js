@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(cors({
   origin: 
   ['http://localhost:3000', 
-  'https://portfolio.d3ssupx6aiji5o.amplifyapp.com'],
+  'https://portfolio.d30eostezad756.amplifyapp.com'],
 }));
 
 app.get("/", (req, res) => {
