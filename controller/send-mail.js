@@ -12,10 +12,11 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-const handleRequestGrades = async (req, res) => {
-    const { name, email, org, orgType } = req.body;
+const handleMessage = async (req, res) => {
+    const { email, message } = req.body;
+    console.log(`email ${email}, message ${message}`)
     try {
-        const mailSent = await handleSendMail(name, email, org, orgType);
+        const mailSent = await handleSendMail( email, message);
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         res.json({ success: mailSent });
@@ -24,18 +25,15 @@ const handleRequestGrades = async (req, res) => {
     }
 };
 
-
-const handleSendMail = (name, email, org, orgType) => {
+const handleSendMail = (email, message) => {
     const toEmail = "jakubmatusik11@gmail.com";
     const mailOptions = {
         from: user_mail,
         to: toEmail,
         subject: 'Email Verification',
-        html: `<h4> Employer requested to see your grades: </h4></br>
-        <p>Name: ${name}</p></br>
-        <p>Email: ${email}</p></br>
-        <p>Organisation: ${org}</p></br>
-        <p>Org-Type: ${orgType}</p></br>`
+        html: `<h4> Employer sent you a message: </h4></br>
+        <p>Email: ${email}</p></br></br>
+        <p>Message: ${message}</p>`
     };
 
     return new Promise((resolve, reject) => {
@@ -53,5 +51,5 @@ const handleSendMail = (name, email, org, orgType) => {
 
 
 module.exports = {
-    handleRequestGrades: handleRequestGrades
+    handleMessage: handleMessage
 }
