@@ -17,8 +17,8 @@ const handleRequestGrades = async (req, res) => {
     console.log(`name: ${name}, email: ${email}, org: ${org}, orgType: ${orgType}`)
     try {
         const mailSent = await handleSendMail(name, email, org, orgType);
-        res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        // res.header("Access-Control-Allow-Origin", "*");
+        // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         res.json({ success: mailSent });
     } catch (error) {
         res.status(400).json("Failed to update");
