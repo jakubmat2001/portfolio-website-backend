@@ -9,12 +9,13 @@ const PORT = process.env.PORT || 8000;
 const app = express();
 app.use(bodyParser.json());
 
-app.use(cors({
-  origin: 
-  ['http://localhost:3000', 
-  'https://portfolio.d30eostezad756.amplifyapp.com'],
-}));
+app.use(cors());
 
+// {
+//   origin: 
+//   ['http://localhost:3000', 
+//   'https://portfolio.d30eostezad756.amplifyapp.com'],
+// }
 app.get("/", (req, res) => {
   res.json({"ok": true});
 });
